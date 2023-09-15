@@ -13,23 +13,17 @@ const images = [
   },
 ];
 
-// Задали конст і її значення це посилання на список ul.gallery!
 const galleryList = document.querySelector(".gallery");
+const galleryArray = [];
 
-// Для кожного зображення створюємо li та img елементи і додаємо їх до DOM
 images.forEach((image) => {
-  const listItem = document.createElement("li");
-  listItem.classList.add("stls");
-  listItem.style.listStyleType = "none";
-  const img = document.createElement("img");
-  img.height = "400";
-  img.src = image.url;
-  img.alt = image.alt;
-  img.classList.add("gallery-image");
-
-  listItem.appendChild(img);
-  galleryList.appendChild(listItem);
+  galleryArray.push(
+    `<li><img height=400 src="${image.url}" alt="${image.alt}"></li>`
+  );
+  // console.log(listItem);
 });
+galleryList.insertAdjacentHTML("beforeend", galleryArray.join(""));
+galleryList.style.listStyleType = "none";
 // New color
 const bc = document.querySelector("body");
 bc.style.backgroundColor = "teal";
