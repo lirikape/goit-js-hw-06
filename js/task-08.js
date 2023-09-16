@@ -1,23 +1,38 @@
-function handleSubmit(event) {
-    event.preventDefault(); // Зупиняємо перезавантаження сторінки
 
-    const form = event.target; // Отримуємо форму
-    const formData = new FormData(form); // Отримуємо дані з форми
-    const formDataObject = {}; // Об'єкт для збереження даних форми
-
-    // Проходимося по всіх елементах форми і додаємо їх у об'єкт
-    formData.forEach((value, key) => {
-        formDataObject[key] = value;
-    });
-
-    // Перевіряємо, чи всі поля заповнені
-    if (formDataObject.email && formDataObject.password) {
-        // Виводимо об'єкт з даними у консоль
-        console.log(formDataObject);
-        // Очищаємо значення полів форми
-        form.reset();
-    } else {
-        // Виводимо повідомлення про незаповнені поля
-        alert('Всі поля повинні бути заповнені!');
+    // Функція, яка обробляє відправку форми
+    function handleSubmit(event) {
+      event.preventDefault(); // Зупиняємо перезавантаження сторінки при відправці форми
+  
+      const form = event.target;
+      const formData = new FormData(form);
+      const data = {};
+  
+      formData.forEach((value, key) => {
+        data[key] = value;
+      });
+  
+      // Перевірка на заповненість полів, Виправив на або як ви і сказали!
+      if (!data.email || !data.password) {
+        alert('Всі поля повинні бути заповнені');
+        return;
+      }
+  
+      // Виведення об'єкта з введеними даними в консоль
+      console.log(data);
+  
+      // Очищення полів форми
+      form.reset();
     }
-}
+  
+    // Додаємо слухача події submit до форми
+    const loginForm = document.querySelector('.login-form');
+    if (loginForm) {
+      loginForm.addEventListener('submit', handleSubmit);
+    }
+
+  
+  
+  
+  
+  
+  

@@ -1,18 +1,27 @@
-const decrementButton = document.querySelector('[data-action="decrement"]');
-const incrementButton = document.querySelector('[data-action="increment"]');
-const valueSpan = document.querySelector('#value');
+function handleSubmit(event) {
+  event.preventDefault(); // Зупиняємо перезавантаження сторінки при відправці форми
 
-let counterValue = 0;
-decrementButton.addEventListener("click", () => {
-  counterValue -= 1;
-  updateCounterValue();
-});
+  const form = event.target;
+  const formData = new FormData(form);
+  const data = {};
 
-incrementButton.addEventListener("click", () => {
-  counterValue += 1;
-  updateCounterValue();
-});
+  formData.forEach((value, key) => {
+    data[key] = value;
+  });
 
-function updateCounterValue() {
-  valueSpan.textContent = counterValue;
+  // Перевірка на заповненість полів
+  if (!data.email || !data.password) {
+    alert('Всі поля повинні бути заповнені');
+    return;
+  }
+
+  // Виведення об'єкта з введеними даними в консоль
+  console.log(data);
+
+  // Очищення полів форми
+  form.reset();
 }
+
+// Додаємо слухача події submit до форми
+const loginForm = document.getElementById('loginForm');
+loginForm.addEventListener('submit', handleSubmit);
