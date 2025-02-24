@@ -34,3 +34,23 @@ const uniqueSortedCourses = students
   .sort((a, b) => a.localeCompare(b));
 
 console.log(uniqueSortedCourses); // ['біологія', 'інформатика', 'література', 'математика', 'фізика']
+function filterArray(numbers, value) {
+  const filteredNumbers = [];
+  // Change code below this line
+
+
+  numbers.forEach(function (number) {
+    if (number > value) {
+      filteredNumbers.push(number);
+    }
+  });
+
+  // for (let i = 0; i < numbers.length; i += 1) {
+  //   if (numbers[i] > value) {
+  //     filteredNumbers.push(numbers[i]);
+  //   }
+  // }
+
+  // Change code above this line
+  return filteredNumbers;
+}
