@@ -76,20 +76,34 @@ function filterArray(numbers, value) {
 // }
 
 
-const hotel = {
-  username: "Resort hotel",
-  showThis() {
-    const foo = () => {
-      // Стрілки запам'ятовують контекст під час оголошення
-      // з батьківської області видимості
-      console.log("this in foo: ", this);
-    };
+// const hotel = {
+//   username: "Resort hotel",
+//   showThis() {
+//     const foo = () => {
+//       // Стрілки запам'ятовують контекст під час оголошення
+//       // з батьківської області видимості
+//       console.log("this in foo: ", this);
+//     };
 
-    foo();
-    console.log("this in showThis: ", this);
-  },
+//     foo();
+//     console.log("this in showThis: ", this);
+//   },
+// };
+
+// hotel.showThis();
+function greet(clientName) {
+  return `${clientName}, ласкаво просимо в «${this.service}».`;
+}
+
+const steam = {
+  service: "Steam",
 };
+const steamGreeter = greet.bind(steam);
+steamGreeter("Манго"); // "Манго, ласкаво просимо в «Steam»."
 
-hotel.showThis();
-// this in foo: {username: 'Resort hotel', showThis: ƒ}
-// this in showThis: {username: 'Resort hotel',showThis: ƒ}
+const gmail = {
+  service: "Gmail",
+};
+const gmailGreeter = greet.bind(gmail);
+gmailGreeter("Полі"); // "Полі, ласкаво просимо в «Gmail»."
+
