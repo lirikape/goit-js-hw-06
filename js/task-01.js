@@ -54,23 +54,42 @@ function filterArray(numbers, value) {
   // Change code above this line
   return filteredNumbers;
 }
-function filterArray(numbers, value) {
-  const filteredNumbers = [];
-  // Change code below this line
+// function filterArray(numbers, value) {
+//   const filteredNumbers = [];
+//   // Change code below this line
 
 
-  numbers.forEach(function (number) {
-    if (number > value) {
-      filteredNumbers.push(number);
-    }
-  });
+//   numbers.forEach(function (number) {
+//     if (number > value) {
+//       filteredNumbers.push(number);
+//     }
+//   });
 
-  // for (let i = 0; i < numbers.length; i += 1) {
-  //   if (numbers[i] > value) {
-  //     filteredNumbers.push(numbers[i]);
-  //   }
-  // }
+//   // for (let i = 0; i < numbers.length; i += 1) {
+//   //   if (numbers[i] > value) {
+//   //     filteredNumbers.push(numbers[i]);
+//   //   }
+//   // }
 
-  // Change code above this line
-  return filteredNumbers;
-}
+//   // Change code above this line
+//   return filteredNumbers;
+// }
+
+
+const hotel = {
+  username: "Resort hotel",
+  showThis() {
+    const foo = () => {
+      // Стрілки запам'ятовують контекст під час оголошення
+      // з батьківської області видимості
+      console.log("this in foo: ", this);
+    };
+
+    foo();
+    console.log("this in showThis: ", this);
+  },
+};
+
+hotel.showThis();
+// this in foo: {username: 'Resort hotel', showThis: ƒ}
+// this in showThis: {username: 'Resort hotel',showThis: ƒ}
